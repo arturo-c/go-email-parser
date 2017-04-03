@@ -42,5 +42,5 @@ func ParseEmailEndpoint(w http.ResponseWriter, req *http.Request) {
 func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/parse", ParseEmailEndpoint).Methods("POST")
-	log.Fatal(http.ListenAndServe(":12345", router))
+	log.Fatal(http.ListenAndServe(":80", router))
 }
