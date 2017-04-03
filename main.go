@@ -34,6 +34,7 @@ func ParseEmailEndpoint(w http.ResponseWriter, req *http.Request) {
 	emailJson.Subject = msg.Header.Get("Subject")
 	emailJson.MessageID = msg.Header.Get("Message-ID")
 
+	w.Header().Set("Content-Type", "application/json")
 	enc := json.NewEncoder(w)
 	enc.SetEscapeHTML(false)
 	enc.Encode(emailJson)
