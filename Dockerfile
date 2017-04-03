@@ -22,3 +22,5 @@ RUN go install github.com/arturo-c/go-email-parser
 
 # Document that the service listens on port 80.
 EXPOSE 80
+
+CMD go run main.go
