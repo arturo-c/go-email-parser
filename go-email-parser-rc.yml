@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: go-email-parser
+spec:
+  replicas: 3
+  selector:
+    app: go-email-parser
+  template:
+    metadata:
+      name: go-email-parser
+      labels:
+        app: go-email-parser
+    spec:
+      containers:
+      - name: go-email-parser
+        image: go-email-parser:v1
+        ports:
+        - containerPort: 80
