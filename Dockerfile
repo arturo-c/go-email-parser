@@ -18,7 +18,6 @@ RUN curl -fsSL "$GLIDE_DOWNLOAD_URL" -o glide.tar.gz \
 WORKDIR $GOPATH/src/github.com/arturo-c/go-email-parser
 
 RUN glide install
-RUN go install github.com/arturo-c/go-email-parser
 RUN go build
 
 # Document that the service listens on port 8080.
