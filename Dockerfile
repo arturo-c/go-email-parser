@@ -19,8 +19,9 @@ WORKDIR $GOPATH/src/github.com/arturo-c/go-email-parser
 
 RUN glide install
 RUN go install github.com/arturo-c/go-email-parser
+RUN go build
 
-# Document that the service listens on port 80.
-EXPOSE 80
+# Document that the service listens on port 8080.
+EXPOSE 8080
 
-CMD go run main.go
+CMD ./go-email-parser

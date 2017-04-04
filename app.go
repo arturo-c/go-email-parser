@@ -23,27 +23,6 @@ type EmailJson struct {
 	MessageID string `json:"Message-ID"`
 }
 
-func ParseEmailEndpoint(w http.ResponseWriter, req *http.Request) {
-	//params  := mux.Vars(req)
-	body, err := ioutil.ReadAll(req.Body)
-	msg, err := mail.ReadMessage(bytes.NewBuffer([]byte(body)))
-	var emailJson EmailJson
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(msg.Header.Get("Message-ID"))
-	emailJson.To = msg.Header.Get("To")
-	emailJson.From = msg.Header.Get("From")
-	emailJson.Date = msg.Header.Get("Date")
-	emailJson.Subject = msg.Header.Get("Subject")
-	emailJson.MessageID = msg.Header.Get("Message-ID")
-
-	w.Header().Set("Content-Type", "application/json")
-	enc := json.NewEncoder(w)
-	enc.SetEscapeHTML(false)
-	enc.Encode(emailJson)
-}
-
 func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/parse", ParseEmailEndpoint).Methods("POST")
 }
@@ -55,4 +34,36 @@ func (a *App) Run(port string) {
 func (a *App) Initialize() {
 	a.Router = mux.NewRouter()
 	a.initializeRoutes()
+}
+
+func ParseEmailEndpoint(w http.ResponseWriter, req *http.Request) {
+	//params  := mux.Vars(req)
+	body, err := ioutil.ReadAll(req.Body)
+	msg, err := mail.ReadMessage(bytes.NewBuffer([]byte(body)))
+	var emailJson EmailJson
+	if err != nil {
+		fmt.Println("Invalid Email Format")
+		respondWithError(w, http.StatusBadRequest, "Invalid Email Format")
+		return
+	}
+	fmt.Println(msg.Header.Get("Message-ID"))
+	emailJson.To = msg.Header.Get("To")
+	emailJson.From = msg.Header.Get("From")
+	emailJson.Date = msg.Header.Get("Date")
+	emailJson.Subject = msg.Header.Get("Subject")
+	emailJson.MessageID = msg.Header.Get("Message-ID")
+
+	respondWithJSON(w, http.StatusOK, emailJson)
+}
+
+func respondWithError(w http.ResponseWriter, code int, message string) {
+	respondWithJSON(w, code, map[string]string{"error": message})
+}
+
+func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
+	response, _ := json.Marshal(payload)
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(code)
+	w.Write(response)
 }

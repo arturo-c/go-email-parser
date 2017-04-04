@@ -4,5 +4,5 @@ func main() {
 	a := App{}
 	a.Initialize()
 
-	a.Run(":80")
+	a.Run(":8080")
 }
