@@ -1,0 +1,47 @@
+Delivered-To: santa@northpole.com
+Received: by 10.159.41.68 with SMTP id t62csp570647uat;
+        Thu, 16 Mar 2017 04:44:28 -0700 (PDT)
+X-Received: by 10.99.140.69 with SMTP id q5mr9342725pgn.179.1489664668601;
+        Thu, 16 Mar 2017 04:44:28 -0700 (PDT)
+Return-Path: <llbean.50094@envfrm.rsys5.com>
+Received: from omp.e1.llbean.com (omp.e1.llbean.com. [199.7.202.38])
+        by mx.google.com with ESMTPS id d2si5062976pli.110.2017.03.16.04.44.28
+        for <santa@northpole.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 16 Mar 2017 04:44:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of llbean.50094@envfrm.rsys5.com designates 199.7.202.38 as permitted sender) client-ip=199.7.202.38;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@e1.llbean.com;
+       dkim=pass header.i=@responsys.net;
+       dkim=pass header.i=@responsys.net;
+       spf=pass (google.com: domain of llbean.50094@envfrm.rsys5.com designates 199.7.202.38 as permitted sender) smtp.mailfrom=llbean.50094@envfrm.rsys5.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=e1.llbean.com
+Received: by omp.e1.llbean.com id hp9t9o1hctok for <santa@northpole.com>; Thu, 16 Mar 2017 04:25:51 -0700 (envelope-from <llbean.50094@envfrm.rsys5.com>)
+X-CSA-Complaints: whitelist-complaints@eco.de
+Received: by omp.e1.llbean.com id hp9r3u1hctou for <santa@northpole.com>; Thu, 16 Mar 2017 04:22:00 -0700 (envelope-from <llbean.50094@envfrm.rsys5.com>)
+X-CSA-Complaints: whitelist-complaints@eco.de
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="----msg_border_dPN32EhfaN"
+Date: Thu, 16 Mar 2017 04:22:00 -0700
+To: santa@northpole.com
+From: "L.L.Bean" <llbean@e1.llbean.com>
+Reply-To: "L.L.Bean" <reply@e1.llbean.com>
+Subject: Climbing mountains. Breaking barriers.
+Feedback-ID: 50094:10054114:oraclersys
+List-Unsubscribe: <https://e1.llbean.com/pub/optout/UnsubscribeOneStepConfirmAction?YES=true&_ri_=X0Gzc2X%3DYQpglLjHJlYQGszgUwhOzf9mP6kGYqEPJ5EUtndJu7JkbsUZqHgRdoY00BSl6zlHzHg2eWlTzJp6C33IAH8OeJXeiIbkHpMrBOge1xxen0hfGn-rZPtGFEokdXpJbRLCekQXkKDT3cyk-m7W_rfL1twsjF8aR4wDD>, <mailto:unsubscribe-YQpglLjHJlYQGszgUwhOzf9mP6kGcNJJkzeakBzfKaj2eFWr1eXzbczbn@imh.rsys5.com?subject=List-Unsubscribe>
+X-sgxh1: MtmzfjHptQJhu
+X-rext: 5.interact5.EkF3OowxDuyAsE5-GycYvccsVHs7xdHrTLz4jSL_qJqg
+X-cid: llbean.10351648
+Message-ID: <0.0.4D.537.1D29E4787E56956.0@omp.e1.llbean.com>
+
+------msg_border_dPN32EhfaN
+Date: Thu, 16 Mar 2017 04:22:00 -0700
+Content-Type: multipart/alternative; boundary="----alt_border_BrDQaPYzhN_1"
+
+------alt_border_BrDQaPYzhN_1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+L.L.Bean Email Update
+____________________________________________________________
+To view this email with images, click below.

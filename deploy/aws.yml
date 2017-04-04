@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: go-email-parser
+spec:
+  replicas: 3
+  selector:
+    app: go-email-parser
+  template:
+    metadata:
+      name: go-email-parser
+      labels:
+        app: go-email-parser
+    spec:
+      containers:
+      - name: go-email-parser
+        image: 818666324255.dkr.ecr.us-east-1.amazonaws.com/go-email-parser:v1
+        ports:
+        - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: go-email-parser
+spec:
+  selector:
+    app: go-email-parser
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
