@@ -1,3 +1,4 @@
 package: github.com/arturo-c/go-email-parser
 import:
 - package: github.com/gorilla/mux
+- package: github.com/Sirupsen/logrus

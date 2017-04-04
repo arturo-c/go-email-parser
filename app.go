@@ -1,14 +1,15 @@
 package main
 
 import (
+	log "github.com/Sirupsen/logrus"
 	"encoding/json"
-	"log"
 	"net/http"
 	"bytes"
 	"fmt"
 	"net/mail"
 	"github.com/gorilla/mux"
 	"io/ioutil"
+	"os"
 )
 
 type App struct {
@@ -32,6 +33,10 @@ func (a *App) Run(port string) {
 }
 
 func (a *App) Initialize() {
+	// Log as JSON instead of the default ASCII formatter.
+	log.SetFormatter(&log.JSONFormatter{})
+	log.SetOutput(os.Stdout)
+	log.SetLevel(log.InfoLevel)
 	a.Router = mux.NewRouter()
 	a.initializeRoutes()
 }
@@ -39,19 +44,26 @@ func (a *App) Initialize() {
 func ParseEmailEndpoint(w http.ResponseWriter, req *http.Request) {
 	//params  := mux.Vars(req)
 	body, err := ioutil.ReadAll(req.Body)
-	msg, err := mail.ReadMessage(bytes.NewBuffer([]byte(body)))
-	var emailJson EmailJson
 	if err != nil {
 		fmt.Println("Invalid Email Format")
 		respondWithError(w, http.StatusBadRequest, "Invalid Email Format")
 		return
 	}
-	fmt.Println(msg.Header.Get("Message-ID"))
+	msg, err := mail.ReadMessage(bytes.NewBuffer([]byte(body)))
+	var emailJson EmailJson
+	if err != nil {
+		log.Warn("Invalid Email Format")
+		respondWithError(w, http.StatusBadRequest, "Invalid Email Format")
+		return
+	}
+
 	emailJson.To = msg.Header.Get("To")
 	emailJson.From = msg.Header.Get("From")
 	emailJson.Date = msg.Header.Get("Date")
 	emailJson.Subject = msg.Header.Get("Subject")
 	emailJson.MessageID = msg.Header.Get("Message-ID")
+
+	log.WithFields(log.Fields{"email-message": emailJson}).Info("New Email Parse")
 
 	respondWithJSON(w, http.StatusOK, emailJson)
 }
