@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis
+  labels:
+    name: redis
+spec:
+  containers:
+    - name: redis
+      image: sameersbn/redis
+      ports:
+        - containerPort: 6379
+          protocol: TCP
+      volumeMounts:
+        - mountPath: /var/lib/redis
+          name: data
+  volumes:
+    - name: data
+      emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  labels:
+    name: redis
+spec:
+  type: NodePort
+  ports:
+    - port: 6379
+      targetPort: 6379
+      protocol: TCP
+  selector:
+    name: redis
