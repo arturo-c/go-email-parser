@@ -1,6 +1,18 @@
-hash: 40a7624108a1316476e7591f389dce08c2af9f9b489df0f74386ed22a3874372
-updated: 2017-04-03T23:33:31.79243308-05:00
+hash: 2433a195c15942f6519592745f371fb05eae7a4362520ed241d4ff43d51de35f
+updated: 2017-04-07T19:18:12.174353117-05:00
 imports:
+- name: github.com/garyburd/redigo
+  version: 0d253a66e6e1349f4581d6d2b300ee434ee2da9f
+  subpackages:
+  - redis
+- name: github.com/go-redis/redis
+  version: dd76391eb986c2ea0aba41e9edde61ff7e0d4b28
+  subpackages:
+  - internal
+  - internal/consistenthash
+  - internal/hashtag
+  - internal/pool
+  - internal/proto
 - name: github.com/gorilla/context
   version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
 - name: github.com/gorilla/mux
